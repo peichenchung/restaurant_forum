@@ -7,4 +7,6 @@ Description: <%= @restaurant.description %><br>
 
 <br>
 
+<%= link_to 'Edit', edit_admin_restaurant_path %> &emsp; 
+<%= link_to 'Delete', admin_restaurant_path, method: :delete, data: {confirm:"Are you sure?"} %><br>
 <%= link_to 'Back to Index', admin_restaurants_path %>
