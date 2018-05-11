@@ -10,13 +10,15 @@
   </head>
 
   <body>
+    <!-- notice & alert -->
     <% if flash[:notice] %>
-      <p class="notice"><%= notice %></p>
+      <div class="alert alert-success" role="alert"><%= notice %></div>
     <% end %>
 
     <% if flash[:alert] %>
-      <p class="alert"><%= alert %></p>
+      <div class="alert alert-danger" role="alert"><%= alert %></div>
     <% end %>
+
 
     <!-- 導覽列 套用Bootstrap -->
     <nav class="navbar navbar-default">
