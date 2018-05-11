@@ -10,8 +10,13 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if flash[:notice] %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
 
     <!-- 導覽列 套用Bootstrap -->
     <nav class="navbar navbar-default">
