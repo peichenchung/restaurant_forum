@@ -9,4 +9,7 @@
   </li>
   <% end %>
 </ul>
+
+<%= paginate @restaurants %><%# 分頁導覽器 %>
+<br>
 <%= link_to 'New Restaurant', new_admin_restaurant_path %>

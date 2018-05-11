@@ -30,8 +30,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem 'devise'
-gem 'carrierwave', '~> 1.0'
-gem 'ffaker'
+gem 'carrierwave', '~> 1.0' #上傳器
+gem 'ffaker' #假資料
+gem 'kaminari' #分頁功能
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

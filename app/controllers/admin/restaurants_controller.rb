@@ -5,7 +5,12 @@ class Admin::RestaurantsController < ApplicationController
 
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.page(params[:page]).per(10)
+    #原為Restaurant.all
+    #利用Kaminari gem完成分頁功能
+    #page 會根據分頁序數來篩選對應資料
+    #per 決定一頁有幾筆資料
+    #params[:page] 取得分頁數值,page方法就知道要讀取第幾頁的資料
   end
 
   def new
