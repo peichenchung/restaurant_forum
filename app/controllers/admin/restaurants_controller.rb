@@ -1,13 +1,11 @@
 class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_user! #Devise提供的驗證方法
   before_action :authenticate_admin #自己寫的方法,寫在superclass的ApplicationController中
+  before_action :set_restaurant, only: [:show, :edit, :update]
+
 
   def index
     @restaurants = Restaurant.all
-  end
-
-  def show
-    @restaurant = Restaurant.find(params[:id])
   end
 
   def new
@@ -32,6 +30,26 @@ class Admin::RestaurantsController < ApplicationController
     end
   end
 
+  def show
+    #before_action :set_restaurant
+  end
+
+  def edit
+    #before_action :set_restaurant
+  end
+
+  def update
+    #before_action :set_restaurant
+    if @restaurant.update(restaurant_params)
+      flash[:notice] = "restaurant was successfully updated"
+      redirect_to admin_restaurant_path(@restaurant)
+    else
+      flash.now[:alert] = "restaurant was failed to update"
+      render :edit
+    end
+  end
+
+
   private
 
   #Strong Parameters: 在讀取表單資料時，基於安全考量，必須在參數傳入時多做一層處理
@@ -39,5 +57,9 @@ class Admin::RestaurantsController < ApplicationController
     params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description)
     #使用require(:restaurant)拿出表單資料
     #透過permit過濾資料,防止有人傳入不相關的惡意資訊
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
   end
 end
