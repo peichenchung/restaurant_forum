@@ -1,0 +1,32 @@
+<%# 讀取@restaurant.errors的內容幫助使用者了解為何被退回 %>
+<% if @restaurant.errors.any? %>
+  <h2>We have some errors here!</h2>
+  <ul>
+    <% @restaurant.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_for [:admin, @restaurant] do |f| %>
+<%# 用中括號標示來告訴Rails要去namespace找相對應的路徑 %>
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :tel, "Tel" %>
+  <%= f.text_field :tel %>
+
+  <%= f.label :address, "Address" %>
+  <%= f.text_field :address %>
+
+  <%= f.label :opening_hours, "Opening Hours" %>
+  <%= f.text_field :opening_hours %>
+
+  <%= f.label :description, "Description" %>
+  <%= f.text_area :description %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Back to Index', admin_restaurants_path %>
