@@ -1,7 +1,7 @@
 class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_user! #Devise提供的驗證方法
   before_action :authenticate_admin #自己寫的方法,寫在superclass的ApplicationController中
-  before_action :set_restaurant, only: [:show, :edit, :update]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -47,6 +47,12 @@ class Admin::RestaurantsController < ApplicationController
       flash.now[:alert] = "restaurant was failed to update"
       render :edit
     end
+  end
+
+  def destroy
+    #before_action :set_restaurant
+    redirect_to admin_restaurants_path #回到index
+    flash[:alert] = "restaurant was deleted"
   end
 
 
