@@ -3,6 +3,6 @@ class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_admin #自己寫的方法,寫在superclass的ApplicationController中
 
   def index
-    
+    @restaurants = Restaurant.all
   end
 end
