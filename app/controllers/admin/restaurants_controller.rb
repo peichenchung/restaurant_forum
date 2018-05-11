@@ -51,6 +51,7 @@ class Admin::RestaurantsController < ApplicationController
 
   def destroy
     #before_action :set_restaurant
+    @restaurant.destroy
     redirect_to admin_restaurants_path #回到index
     flash[:alert] = "restaurant was deleted"
   end
