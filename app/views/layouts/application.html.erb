@@ -22,7 +22,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Restaurant Forum</a>
+          <a class="navbar-brand" href="/">Restaurant Forum</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -36,6 +36,9 @@
               <li><%= link_to('註冊', new_user_registration_path) %></li>
               <li><%= link_to('登入', new_user_session_path) %></li>
             <% end %>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li><%= link_to('後台管理', admin_root_path) %></li>
           </ul>
         </div>
 
