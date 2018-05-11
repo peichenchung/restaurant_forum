@@ -10,22 +10,6 @@
   </head>
 
   <body>
-    <!-- notice & alert -->
-    <% if flash[:notice] %>
-      <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong><%= notice %></strong>
-      </div>
-    <% end %>
-
-    <% if flash[:alert] %>
-      <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong><%= alert %></strong>
-      </div>
-    <% end %>
-
-
     <!-- 導覽列 套用Bootstrap -->
     <nav class="navbar navbar-default navbar-inverse">
       <div class="container-fluid">
@@ -57,6 +41,25 @@
 
       </div><!-- container-fluid -->
     </nav>
+
+    <!-- notice & alert -->
+    <% if flash[:notice] %>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong><%= notice %></strong>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      
+      <div class="container">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong><%= alert %></strong>
+        </div>
+      </div>
+    
+    <% end %>
 
 
     <%= yield %>
