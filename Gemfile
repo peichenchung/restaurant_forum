@@ -33,6 +33,8 @@ gem 'devise'
 gem 'carrierwave', '~> 1.0' #上傳器
 gem 'ffaker' #假資料
 gem 'kaminari' #分頁功能
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
