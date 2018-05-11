@@ -6,6 +6,10 @@ class Admin::RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def show
+    @restaurant = Restaurant.find(params[:id])
+  end
+
   def new
     @restaurant = Restaurant.new
     #建立新的餐廳實例@restaurant,然後將這個實例存入變數
