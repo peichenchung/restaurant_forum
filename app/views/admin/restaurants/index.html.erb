@@ -5,12 +5,14 @@
   
   <table class="table table-striped table-bordered">
     <tr>
+      <th>#</th>
       <th>Restaurant Name</th>
       <th></th>
     </tr>  
     
     <% @restaurants.each do |restaurant| %>
     <tr>
+      <td><%= restaurant.id %></td>
       <td><%= restaurant.name %></td>
       <td>
         <%= link_to 'Show', admin_restaurant_path(restaurant) %> &emsp;
