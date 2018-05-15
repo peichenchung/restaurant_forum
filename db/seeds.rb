@@ -30,5 +30,5 @@ puts "Category created!"
 # Default admin
 # 建立一個預設的admin帳號
 
-User.create(email: "root@example.com", password: "12345678", role: "admin")
+User.create(email: "admin@sample.com", password: "sample", role: "admin")
 puts "Default admin created!"
