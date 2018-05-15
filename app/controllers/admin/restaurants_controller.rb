@@ -66,7 +66,7 @@ class Admin::RestaurantsController < ApplicationController
 
   #Strong Parameters: 在讀取表單資料時，基於安全考量，必須在參數傳入時多做一層處理
   def restaurant_params
-    params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description, :image)
+    params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description, :image, :category_id)
     #使用require(:restaurant)拿出表單資料
     #透過permit過濾資料,防止有人傳入不相關的惡意資訊
   end
