@@ -15,7 +15,8 @@
         <%= f.text_field :name, placeholder: "Category Name",  class: "form-control" %>
       </div>
       <%= f.submit class: "btn btn-primary" %>
-
+      
+      <%# 顯示錯誤訊息 %>
       <% if @category.errors.any? %>
         <%= @category.errors.full_messages.to_sentence %>
       <% end %>
@@ -30,12 +31,14 @@
       <tr>
         <th>#</th>
         <th>Category Name</th>
+        <th></th>
       </tr>
 
       <% @categories.each do |category| %>
       <tr>
         <td><%= category.id %></td>
         <td><%= category.name %></td>
+        <td><%= link_to 'Edit', admin_categories_path(id: category.id) %></td>
       </tr>
       <% end %><%# 勿忘!! %>
     </table>
