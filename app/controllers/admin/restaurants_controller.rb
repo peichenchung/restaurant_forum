@@ -1,7 +1,8 @@
-class Admin::RestaurantsController < ApplicationController
+class Admin::RestaurantsController < Admin::BaseController
   #before_action :authenticate_user! 
     #Devise提供的驗證方法,移到application_controller.rb
-  before_action :authenticate_admin #自己寫的方法,寫在superclass的ApplicationController中
+  #before_action :authenticate_admin 
+    #自己寫的方法,(寫在superclass的ApplicationController中>>移到BaseController)
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
 
