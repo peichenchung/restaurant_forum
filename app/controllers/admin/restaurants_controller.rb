@@ -6,7 +6,7 @@ class Admin::RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.page(params[:page]).per(10)
-    #原為Restaurant.all
+    #原為@restaurant = Restaurant.all
     #利用Kaminari gem完成分頁功能
     #page 會根據分頁序數來篩選對應資料
     #per 決定一頁有幾筆資料
