@@ -1,5 +1,17 @@
 /* 自定義的CSS樣式 */
 
+/* Category分類列置中 */
+.nav-pills-center {
+  text-align: center;
+}
+
+.nav-pills-center > li {
+  float: none;
+  display: inline-block;
+}
+
+/* 餐廳介紹 */
+
 .restaurant-item {
   border: 1px solid grey;
   padding: 4px;

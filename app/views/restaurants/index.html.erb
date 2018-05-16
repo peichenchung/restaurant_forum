@@ -1,6 +1,15 @@
 <div class="container">
   <h2>餐廳前台</h2>
 
+  <ul class="nav nav-pills nav-pills-center"><%# nav-pills-center為自訂css樣式 %>
+    <li role="presentation" class="active"><%= link_to "全部餐廳", root_path %></li>
+    <% @categories.each do |category| %>
+      <li role="presentation"><%= link_to category.name, category_path(category) %></li>
+    <% end %>
+  </ul>
+
+  <br>
+
   <% @restaurants.each do |restaurant| %>
     <div class="col-sm-6 col-md-4">
       <div class="restaurant-item">
