@@ -14,8 +14,14 @@
 
 .restaurant-item {
   border: 1px solid grey;
+  border-radius: 4px;
   padding: 4px;
   margin-bottom: 20px;
+}
+
+.restaurant-item img {
+  max-height: 400px;
+  width: 100%;
 }
 
 .restaurant-item .caption {
@@ -24,6 +30,7 @@
 
 .restaurant-item .caption h3 {
   margin-top: 3px;
+  font-size: 120%;
 }
 
 .restaurant-item .caption .category-label {
