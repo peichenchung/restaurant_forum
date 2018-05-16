@@ -1,1 +1,27 @@
-<h1>餐廳前台</h1>
+<div class="container">
+  <h2>餐廳前台</h2>
+
+  <% @restaurants.each do |restaurant| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="restaurant-item">
+        <%= link_to restaurant_path(restaurant) do %><%# 點擊圖片可進入show頁面 %>
+          <% if restaurant.image? %>
+            <%= image_tag restaurant.image.url, class: "img-responsive center-block" %>
+          <% else %>
+            <%= image_tag ("800x600.png"), class: "img-responsive center-block" %>
+            <%# 替代圖片放在app/assets/images中 %>
+          <% end %>
+        <% end %>
+
+        <h3><%= link_to restaurant.name, restaurant_path(restaurant) %></h3>
+        <%# 點擊餐廳名稱可進入show頁面 %>
+        <p><%= restaurant.category.name %></p>
+        <p><%= truncate(restaurant.description, length: 80) %></p>
+        <%# truncate方法用來截段文字,用length將長度限定在80個字母 %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= paginate @restaurants %>
+
+</div>
