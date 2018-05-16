@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   #前台只能瀏覽餐廳資料
   resources :restaurants, only: [:index, :show]
+  resources :categories, only: :show
   root "restaurants#index"
 
   namespace :admin do
