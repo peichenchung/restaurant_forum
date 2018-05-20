@@ -25,6 +25,26 @@
     </tr>
   </table>
 
+
+  <%# 顯示使用者評論 %>
+  <hr>
+  <% @restaurant.comments.each do |comment| %>
+    <div>
+      <h4><%= comment.user.email.split('@').first %></h4>
+      <p><%= simple_format comment.content %></p>
+      <p class="text-muted"><%# 字體顏色較淡 %>
+        <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
+
+        <%# 使用者為管理員才顯示Delete按鈕 %>
+        <% if current_user.admin? %>
+          <%= link_to "Delete", restaurant_comment_path(@restaurant, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </p>
+    </div>
+    <hr>
+  <% end%>
+
+
   <%# 新增評論的表單 %>
   <div class="container">
     <div class="row">
@@ -39,6 +59,7 @@
       <% end %>
     </div>
   </div>
+
 
   <br>
   <%= link_to 'Back to Index', restaurants_path %>
