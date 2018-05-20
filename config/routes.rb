@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   #前台只能瀏覽餐廳資料
-  resources :restaurants, only: [:index, :show]
+  resources :restaurants, only: [:index, :show] do
+    resources :comments, only: [:create, :destroy] #Nested Resources
+  end
+
   resources :categories, only: :show
   root "restaurants#index"
 
