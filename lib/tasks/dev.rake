@@ -4,7 +4,7 @@ namespace :dev do #讓指令出現前綴,有助於指令的結構化管理,如�
   task fake_restaurant: :environment do #定義執行指令為rails dev:fake,:environment讓Rake與Model和資料庫互動
     Restaurant.destroy_all #先清除舊資料
 
-    500.times do |i|
+    150.times do |i|
       Restaurant.create!(name: FFaker::Company.name,
       opening_hours: FFaker::Time.day_of_week,
       tel: FFaker::PhoneNumber.short_phone_number,
@@ -46,5 +46,5 @@ namespace :dev do #讓指令出現前綴,有助於指令的結構化管理,如�
     puts "have created fake comments"
     puts "now you have #{Comment.count} comment data"
   end
-  
+
 end
