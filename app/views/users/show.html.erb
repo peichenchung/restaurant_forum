@@ -1,16 +1,16 @@
 <div class="container">
-  <table class="table table-striped table-bordered">
+  <table>
     <tr>
       <td rowspan="4" class="col-md-4">
         <% if @user.avatar? %>
-          <%= image_tag @user.image.url, width: '350px' %>
+          <%= image_tag @user.avatar.url, width: '200px' %>
         <% else %>
-          <%= image_tag ("800x600.png"), width: '350px' %>
+          <%= image_tag ("800x600.png"), width: '200px' %>
         <% end %>
       </td>
       <td>
         <% if @user.name? %>
-          <%= @user.name %>
+          <h4><%= @user.name %></h4>
         <% else %>
           <h4>User Name</h4>
         <% end %>
