@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy] #Nested Resources
   end
 
+  resources :users, only: [:show, :edit, :update] #User profile
   resources :categories, only: :show
   root "restaurants#index"
 
