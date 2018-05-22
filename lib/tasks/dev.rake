@@ -37,6 +37,8 @@ namespace :dev do #讓指令出現前綴,有助於指令的結構化管理,如�
 
 
   task fake_comment: :environment do
+    Comment.destroy_all
+
     Restaurant.all.each do |restaurant|
       3.times do |i|
         restaurant.comments.create!(
