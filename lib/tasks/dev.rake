@@ -20,11 +20,14 @@ namespace :dev do #讓指令出現前綴,有助於指令的結構化管理,如�
 
 
   task fake_user: :environment do
+    User.destroy_all
+
     20.times do |i|
       user_name = FFaker::Name.first_name
       User.create!(
         email: "#{user_name}@example.com",
-        password: "sample"
+        password: "sample",
+        name: "#{user_name}"
       )
     end
 
