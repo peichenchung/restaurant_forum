@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :comments
+  has_many :restaurants, through: :comments #透過此設定Rails會知道comments table扮演了Join Table的角色
 
   mount_uploader :avatar, AvatarUploader
 

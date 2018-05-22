@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     #@user = User.find(params[:id])
+    @commented_restaurants = @user.restaurants #取得使用者評論過的餐廳資料
   end
 
   def edit
