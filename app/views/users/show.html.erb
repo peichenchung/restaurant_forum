@@ -45,16 +45,19 @@
     <div class="panel-body">
 
       <% @commented_restaurants.uniq.each do |restaurant| %><%# uniq 不顯示重複的餐廳 %>
-        <div class="my-restaurant">
-          <% if restaurant.image? %>
-            <%= image_tag restaurant.image.url, height: '200px' %>
-          <% else %>
-            <%= image_tag ("800x600.png"), height: '200px' %>
-          <% end %>
+        <%= link_to restaurant_path(restaurant) do %>
+          <div class="col-md-4">
+          <div class="my-restaurant">
+            <% if restaurant.image? %>
+              <%= image_tag restaurant.image.url, height: '200px' %>
+            <% else %>
+              <%= image_tag ("800x600.png"), height: '200px' %>
+            <% end %>
 
-          <%= link_to restaurant.name, restaurant_path(restaurant) %>
-        </div>
-        <br>
+            <p><%= restaurant.name %></p>
+          </div>
+          </div>
+        <% end %>
       <% end %>
 
     </div>
