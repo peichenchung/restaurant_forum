@@ -43,7 +43,20 @@
       <h3 class="panel-title"><%= @commented_restaurants.count %> 則評論過的餐廳</h3>
     </div>
     <div class="panel-body">
-      Panel content
+
+      <% @commented_restaurants.each do |restaurant| %>
+        <div class="my-restaurant">
+          <% if restaurant.image? %>
+            <%= image_tag restaurant.image.url, height: '200px' %>
+          <% else %>
+            <%= image_tag ("800x600.png"), height: '200px' %>
+          <% end %>
+
+          <%= link_to restaurant.name, restaurant_path(restaurant) %>
+        </div>
+        <br>
+      <% end %>
+
     </div>
   </div>
 
