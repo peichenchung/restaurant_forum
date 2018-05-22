@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
   validates_presence_of :name #註冊時name必填
 
+  # 確保格式正確
+  validates_format_of :name, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+
+
   def admin?
     self.role == "admin" #會回傳True或False
   end
