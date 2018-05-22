@@ -40,11 +40,11 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= @commented_restaurants.count %> 則評論過的餐廳</h3>
+      <h3 class="panel-title"><%= @commented_restaurants.uniq.count %> 間評論過的餐廳</h3>
     </div>
     <div class="panel-body">
 
-      <% @commented_restaurants.each do |restaurant| %>
+      <% @commented_restaurants.uniq.each do |restaurant| %><%# uniq 不顯示重複的餐廳 %>
         <div class="my-restaurant">
           <% if restaurant.image? %>
             <%= image_tag restaurant.image.url, height: '200px' %>
