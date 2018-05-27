@@ -25,7 +25,13 @@ class RestaurantsController < ApplicationController
 
   def favorite
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.favorites.create!(user: current_user) #寫法有很多種,請參考教案
+    #如果已在我的最愛(避免重複加入favorites table)
+    if Favorite.where(restaurant: @restaurant, user: current_user).count >= 1
+      #跳出提示訊息表示已加入
+      flash[:notice] = "already in favorite list"
+    else
+      @restaurant.favorites.create!(user: current_user) #寫法有很多種,請參考教案
+    end
     redirect_back(fallback_location: root_path) #回上頁
   end
 
