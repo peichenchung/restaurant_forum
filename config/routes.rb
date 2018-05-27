@@ -9,12 +9,12 @@ Rails.application.routes.draw do
 
     #自訂路由：最新動態和優惠活動都是針對Restaurant，所以放在resources :restaurants區塊中
     #瀏覽所有餐廳的最新動態
-    collection do #網址無id
+    collection do #Collection: 用來操作model內全部的資料，因次不需要傳入ID
       get :feeds
     end
 
     #瀏覽個別餐廳的Dashboard(優惠活動)
-    member do #網址帶有id
+    member do #Member: 用來操作model裡的單一資料，因此需要傳入ID來指定單一個record
       get :dashboard
     end
   end

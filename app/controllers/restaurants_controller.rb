@@ -13,4 +13,10 @@ class RestaurantsController < ApplicationController
     @comment = Comment.new
   end
 
+  #最新動態
+  def feeds
+    @recent_restaurants = Restaurant.order(created_at: :desc).limit(10) #新到舊,只顯示10筆
+    @recent_comments = Comment.order(created_at: :desc).limit(10)
+  end
+
 end
