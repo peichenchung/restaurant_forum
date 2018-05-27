@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       # 因為 favorite / unfavorite action 不需要樣板，所以我們習慣使用 POST，而不是 GET
       post :favorite
       post :unfavorite
+      
+      post :like
+      post :unlike
     end
   end
 
