@@ -21,6 +21,7 @@ class RestaurantsController < ApplicationController
 
   #TOP10人氣餐廳
   def tops
+    @top_restaurants = Restaurant.order(favorites_count: :desc).limit(10)
   end
 
   def dashboard
