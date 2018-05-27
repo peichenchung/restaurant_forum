@@ -15,6 +15,9 @@ class User < ApplicationRecord
     # 所以這裡不能用相同設定,否則使用object.restaurants方法時會無法分辨你是要查詢評論過的餐廳還是收藏的餐廳
     # 因此收藏關係指定自定義的名稱,另加來源source告知model name
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_restaurants, through: :likes, source: :restaurants
+
   mount_uploader :avatar, AvatarUploader
 
   validates_presence_of :name #註冊時name必填
