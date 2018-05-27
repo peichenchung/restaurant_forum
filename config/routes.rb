@@ -6,16 +6,15 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index, :show] do
     resources :comments, only: [:create, :destroy] #Nested Resources
 
-
     #自訂路由：最新動態和優惠活動都是針對Restaurant，所以放在resources :restaurants區塊中
-    #瀏覽所有餐廳的最新動態
     collection do #Collection: 用來操作model內全部的資料，因次不需要傳入ID
-      get :feeds
+      get :feeds #瀏覽所有餐廳的最新動態
+
+      get :tops #瀏覽top10人氣餐廳(加入favorite數最高)
     end
 
-    #瀏覽個別餐廳的Dashboard(優惠活動)
     member do #Member: 用來操作model裡的單一資料，因此需要傳入ID來指定單一個record
-      get :dashboard
+      get :dashboard #瀏覽個別餐廳的Dashboard(優惠活動)
 
       # 因為 favorite / unfavorite action 不需要樣板，所以我們習慣使用 POST，而不是 GET
       post :favorite
