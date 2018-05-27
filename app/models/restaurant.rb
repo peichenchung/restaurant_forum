@@ -13,7 +13,6 @@ class Restaurant < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
-  
 
   def is_favorited?(user)
     self.favorited_users.include?(user)
@@ -21,5 +20,10 @@ class Restaurant < ApplicationRecord
 
   def is_liked?(user)
     self.liked_users.include?(user)
+  end
+
+  def count_favorites
+    self.favorites_count = self.favorites.count
+    self.save
   end
 end
