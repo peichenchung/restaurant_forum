@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :comments, dependent: :restrict_with_error #如果user已有評論,就不能刪除帳號
+  has_many :comments, dependent: :destroy #刪除user時, 刪除關聯的comments
   has_many :restaurants, through: :comments #透過此設定Rails會知道comments table扮演了Join Table的角色
 
   mount_uploader :avatar, AvatarUploader
