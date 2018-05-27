@@ -26,6 +26,4 @@ class Restaurant < ApplicationRecord
     #self.favorites_count = self.favorites.count
     #self.save
   #end
-
-  default_scope { order(created_at: :desc) } #避免上傳到heroku排序亂掉
 end
