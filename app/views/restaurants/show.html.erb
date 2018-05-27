@@ -25,11 +25,8 @@
         <%= link_to 'Dashboard', dashboard_restaurant_path(@restaurant), class: "btn btn-primary" %>
         
         <%# 判斷要顯示的按鈕 %>
-        <% if @restaurant.is_favorited?(current_user) %>
-          <%= link_to 'Unfavorite', unfavorite_restaurant_path(@restaurant), method: :post, class: "btn btn-info" %>
-        <% else %>
-          <%= link_to 'Favorite', favorite_restaurant_path(@restaurant), method: :post, class: "btn btn-primary" %>
-        <% end %>
+        <%= render partial: "shared/favorite", locals: {restaurant: @restaurant} %>
+        <%# 用locals把@restaurant傳到partial裡,指派給restaurant變數 %>
       </td>
     </tr>
   </table>
