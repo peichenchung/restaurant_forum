@@ -20,6 +20,7 @@
           <p><%= truncate(restaurant.description, length: 80) %></p>
           <%# truncate方法用來截段文字,用length將長度限定在80個字母 %>   
           <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %> 
+          <%= render partial: "shared/like", locals: {restaurant: restaurant} %>
         </div>
 
       </div>
