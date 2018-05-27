@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     #瀏覽個別餐廳的Dashboard(優惠活動)
     member do #Member: 用來操作model裡的單一資料，因此需要傳入ID來指定單一個record
       get :dashboard
+
+      # 因為 favorite / unfavorite action 不需要樣板，所以我們習慣使用 POST，而不是 GET
+      post :favorite
+      post :unfavorite
     end
   end
 
