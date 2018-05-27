@@ -36,7 +36,7 @@ class RestaurantsController < ApplicationController
       flash[:notice] = "already in favorite list"
     else
       @restaurant.favorites.create!(user: current_user) #寫法有很多種,請參考教案
-      @restaurant.count_favorites
+      #@restaurant.count_favorites >> 用counter_cache方法代替（寫在favorite.rb)
     end
     redirect_back(fallback_location: root_path) #回上頁
   end
@@ -45,7 +45,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     favorites = Favorite.where(restaurant: @restaurant, user: current_user)
     favorites.destroy_all #因為上述程式碼查找出來會是一個集合,所以要用destroy_all而不是destroy
-    @restaurant.count_favorites
+    #@restaurant.count_favorites >> 用counter_cache方法代替（寫在favorite.rb)
     redirect_back(fallback_location: root_path)
   end
 
