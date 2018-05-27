@@ -26,7 +26,7 @@ class RestaurantsController < ApplicationController
   def favorite
     @restaurant = Restaurant.find(params[:id])
     #如果已在我的最愛(避免重複加入favorites table)
-    if Favorite.where(restaurant: @restaurant, user: current_user).count >= 1
+    if @restaurant.is_favorited?(current_user)
       #跳出提示訊息表示已加入
       flash[:notice] = "already in favorite list"
     else
