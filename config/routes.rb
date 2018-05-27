@@ -5,7 +5,20 @@ Rails.application.routes.draw do
   #前台只能瀏覽餐廳資料
   resources :restaurants, only: [:index, :show] do
     resources :comments, only: [:create, :destroy] #Nested Resources
+
+
+    #自訂路由：最新動態和優惠活動都是針對Restaurant，所以放在resources :restaurants區塊中
+    #瀏覽所有餐廳的最新動態
+    collection do #網址無id
+      get :feeds
+    end
+
+    #瀏覽個別餐廳的Dashboard(優惠活動)
+    member do #網址帶有id
+      get :dashboard
+    end
   end
+
 
   resources :users, only: [:show, :edit, :update] #User profile
   resources :categories, only: :show
