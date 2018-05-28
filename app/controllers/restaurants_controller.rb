@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   #before_action :authenticate_user!
     #移到application_controller.rb
+  before_action :set_restaurant, only: [:dashboard, :favorite, :unfavorite, :like, :unlike]
 
   #前台首頁
   def index
@@ -25,11 +26,11 @@ class RestaurantsController < ApplicationController
   end
 
   def dashboard
-    @restaurant = Restaurant.find(params[:id])
+    #@restaurant = Restaurant.find(params[:id])
   end
 
   def favorite
-    @restaurant = Restaurant.find(params[:id])
+    #@restaurant = Restaurant.find(params[:id])
     #如果已在我的最愛(避免重複加入favorites table)
     if @restaurant.is_favorited?(current_user)
       #跳出提示訊息表示已加入
@@ -42,7 +43,7 @@ class RestaurantsController < ApplicationController
   end
 
   def unfavorite
-    @restaurant = Restaurant.find(params[:id])
+    #@restaurant = Restaurant.find(params[:id])
     favorites = Favorite.where(restaurant: @restaurant, user: current_user)
     favorites.destroy_all #因為上述程式碼查找出來會是一個集合,所以要用destroy_all而不是destroy
     #@restaurant.count_favorites >> 用counter_cache方法代替（寫在favorite.rb)
@@ -50,7 +51,7 @@ class RestaurantsController < ApplicationController
   end
 
   def like
-    @restaurant = Restaurant.find(params[:id])
+    #@restaurant = Restaurant.find(params[:id])
     if @restaurant.is_liked?(current_user)
       flash[:notice] = "already liked"
     else
@@ -60,12 +61,16 @@ class RestaurantsController < ApplicationController
   end
 
   def unlike
-    @restaurant = Restaurant.find(params[:id])
+    #@restaurant = Restaurant.find(params[:id])
     likes = Like.where(restaurant: @restaurant, user: current_user)
     likes.destroy_all
     redirect_back(fallback_location: root_path)
   end
 
   private
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 
 end
