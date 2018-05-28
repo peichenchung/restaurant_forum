@@ -18,6 +18,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_restaurants, through: :likes, source: :restaurants
 
+  has_many :followships, dependent: :destroy #一個User擁有很多追蹤記錄(followships)
+  has_many :followings, through: :followships #一個User透過追蹤記錄追蹤很多其他User(followings)
+  #注意：如果關聯設定了:through, :dependent就會被忽略, 所以只在其中一行做設定
+
   mount_uploader :avatar, AvatarUploader
 
   validates_presence_of :name #註冊時name必填
