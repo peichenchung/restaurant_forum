@@ -2,8 +2,11 @@
   <% @users.each do |user| %>
     <li>
       <%= user.name %>
-      <%= link_to 'Follow', followships_path(following_id: user.id), method: :post %>
-      <%= link_to 'Unfollow', followship_path(user), method: :delete %>
+
+      <% if user != current_user %><%# 只有當user不是current_user時才會顯示按鈕 %>
+        <%= link_to 'Follow', followships_path(following_id: user.id), method: :post %>
+        <%= link_to 'Unfollow', followship_path(user), method: :delete %>
+      <% end %>
     </li>
   <% end %>
 </ul>
