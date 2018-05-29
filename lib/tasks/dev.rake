@@ -50,4 +50,21 @@ namespace :dev do #讓指令出現前綴,有助於指令的結構化管理,如�
     puts "now you have #{Comment.count} comment data"
   end
 
+
+  task fake_favorite: :environment do
+    Favorite.destroy_all
+
+    User.all.each do |user|
+      10.times do
+        restaurant = Restaurant.all.sample
+        user.favorites.create!(
+          restaurant: restaurant
+        )
+      end
+    end
+
+    puts "have add fake favorites"
+  end
+
+
 end
