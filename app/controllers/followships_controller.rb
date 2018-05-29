@@ -11,4 +11,13 @@ class FollowshipsController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
   end
+
+  def destroy #unfollow
+    #在followships table上查詢出一筆資料,其外鍵符合current_user與前端傳進來的params[:id]
+    @followship = current_user.followships.where(following_id: params[:id]).first
+    #用where方法會回傳一個物件集合(陣列),所以需要再串接first,將特地物件從陣列取出
+    @followship.destroy
+    flash[:alert] = "Followship destroyed"
+    redirect_back(fallback_location: root_path)
+  end
 end
