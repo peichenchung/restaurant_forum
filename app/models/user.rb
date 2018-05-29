@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def admin?
     self.role == "admin" #會回傳True或False
   end
+
+  def following?(user) #檢查追蹤記錄是否已經存在
+    self.followings.include?(user)
+  end
 end
