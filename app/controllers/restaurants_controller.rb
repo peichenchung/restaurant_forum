@@ -34,7 +34,7 @@ class RestaurantsController < ApplicationController
     #如果已在我的最愛(避免重複加入favorites table)
     if @restaurant.is_favorited?(current_user)
       #跳出提示訊息表示已加入
-      flash[:notice] = "already in favorite list"
+      flash[:alert] = "already in favorite list"
     else
       @restaurant.favorites.create!(user: current_user) #寫法有很多種,請參考教案
       #@restaurant.count_favorites >> 用counter_cache方法代替（寫在favorite.rb)
@@ -53,7 +53,7 @@ class RestaurantsController < ApplicationController
   def like
     #@restaurant = Restaurant.find(params[:id])
     if @restaurant.is_liked?(current_user)
-      flash[:notice] = "already liked"
+      flash[:alert] = "already liked"
     else
       @restaurant.likes.create!(user: current_user)
     end
